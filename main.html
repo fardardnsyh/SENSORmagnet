@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InstaCoverLetter</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        button#copyButton {
+            background: darkgrey;
+            height: 2rem;
+            width: 2rem;
+            border-radius: 100%;
+            padding: .5rem;
+            /* Adjust padding if needed */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loader {
+            position: relative;
+            width: 54px;
+            height: 54px;
+            border-radius: 10px;
+        }
+
+        .loader div {
+            width: 8%;
+            height: 24%;
+            background: rgb(128, 128, 128);
+            position: absolute;
+            left: 50%;
+            top: 30%;
+            opacity: 0;
+            border-radius: 50px;
+            box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+            animation: fade458 1s linear infinite;
+        }
+
+        @keyframes fade458 {
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0.25;
+            }
+        }
+
+        .loader .bar1 {
+            transform: rotate(0deg) translate(0, -130%);
+            animation-delay: 0s;
+        }
+
+        .loader .bar2 {
+            transform: rotate(30deg) translate(0, -130%);
+            animation-delay: -1.1s;
+        }
+
+        .loader .bar3 {
+            transform: rotate(60deg) translate(0, -130%);
+            animation-delay: -1s;
+        }
+
+        .loader .bar4 {
+            transform: rotate(90deg) translate(0, -130%);
+            animation-delay: -0.9s;
+        }
+
+        .loader .bar5 {
+            transform: rotate(120deg) translate(0, -130%);
+            animation-delay: -0.8s;
+        }
+
+        .loader .bar6 {
+            transform: rotate(150deg) translate(0, -130%);
+            animation-delay: -0.7s;
+        }
+
+        .loader .bar7 {
+            transform: rotate(180deg) translate(0, -130%);
+            animation-delay: -0.6s;
+        }
+
+        .loader .bar8 {
+            transform: rotate(210deg) translate(0, -130%);
+            animation-delay: -0.5s;
+        }
+
+        .loader .bar9 {
+            transform: rotate(240deg) translate(0, -130%);
+            animation-delay: -0.4s;
+        }
+
+        .loader .bar10 {
+            transform: rotate(270deg) translate(0, -130%);
+            animation-delay: -0.3s;
+        }
+
+        .loader .bar11 {
+            transform: rotate(300deg) translate(0, -130%);
+            animation-delay: -0.2s;
+        }
+
+        .loader .bar12 {
+            transform: rotate(330deg) translate(0, -130%);
+            animation-delay: -0.1s;
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-gray-100">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold text-center mb-8">InstaCoverLetter</h1>
+
+        <form id="coverLetterForm">
+            <div class="flex flex-col space-y-4">
+                <div class="flex justify-between gap-4 items-center">
+                    <label for="jobTitle" class="w-40 text-gray-700">Job Title:</label>
+                    <input type="text" id="jobTitle" name="jobTitle"
+                        class="w-full px-2 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-black">
+                </div>
+
+                <div class="flex justify-between gap-1 items-center">
+                    <label for="companyName" class="w-52 text-gray-700">Company Name:</label>
+                    <input type="text" id="companyName" name="companyName"
+                        class="w-full px-2 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-black">
+                </div>
+                <div>
+                    <label for="skills" class="text-gray-700">Your Relevant Skills (Comma-separated):</label>
+                    <textarea id="skills" name="skills" rows="3"
+                        class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-black"></textarea>
+                </div>
+                <div>
+                    <label for="jobDescription" class="text-gray-700">Job Description:</label>
+                    <textarea id="jobDescription" name="jobDescription" rows="3"
+                        class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-black"></textarea>
+                </div>
+            </div>
+
+            <button type="submit" id="generateCoverLetter"
+                class="py-2 px-4 mt-3 bg-black text-white rounded-md hover:opacity-70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black opacity-80">Generate
+                Cover Letter</button>
+        </form>
+        <div id="coverLetterContainer" class="mt-8 border border-gray-300 p-4 rounded-md" style="display: none;">
+            <div id="loaderContainer" style="display: none;" class="flex items-center justify-center">
+                <div class="loader flex justify-center items-center h-full">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                    <div class="bar4"></div>
+                    <div class="bar5"></div>
+                    <div class="bar6"></div>
+                    <div class="bar7"></div>
+                    <div class="bar8"></div>
+                    <div class="bar9"></div>
+                    <div class="bar10"></div>
+                    <div class="bar11"></div>
+                    <div class="bar12"></div>
+                </div>
+                <button id="copyButton">
+                    <svg viewBox="0 -0.5 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M17.676 14.248C17.676 15.8651 16.3651 17.176 14.748 17.176H7.428C5.81091 17.176 4.5 15.8651 4.5 14.248V6.928C4.5 5.31091 5.81091 4 7.428 4H14.748C16.3651 4 17.676 5.31091 17.676 6.928V14.248Z"
+                                stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            </path>
+                            <path d="M10.252 20H17.572C19.1891 20 20.5 18.689 20.5 17.072V9.75195" stroke="#000000"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </button>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <script type="module">
+        import { GoogleGenerativeAI } from "https://esm.run/@google/generative-ai";
+        // import { GoogleGenerativeAI } from "@google/generative-ai";
+
+        // Form submission and error handling
+        const coverLetterForm = document.getElementById('coverLetterForm');
+        coverLetterForm.addEventListener('submit', async (event) => {
+            event.preventDefault(); // Prevent default form submission
+
+            const companyName = document.getElementById('companyName').value;
+            const jobTitle = document.getElementById('jobTitle').value;
+            const skills = document.getElementById('skills').value.split(',').map(skill => skill.trim());
+
+            if (!companyName || !jobTitle || !skills.length) {
+                alert('Please fill in all required fields (Company Name, Job Title, Skills)');
+                return;
+            }
+            // Display the loader inside the container
+            const loaderContainer = document.getElementById('loaderContainer');
+            const coverLetterContainer = document.getElementById('coverLetterContainer');
+            loaderContainer.style.display = 'flex'; // Use flex for centering
+            coverLetterContainer.style.display = 'block'; // Use flex for centering
+
+
+            const prompt = `Write a persuasive cover letter in a professional tone without the introduction, name or addresss for the ${jobTitle} position at ${companyName}. Highlight my relevant skills: ${skills.join(', ')}`;
+            const coverLetter = await generateCoverLetter(companyName, jobTitle, skills, jobDescription);
+            // const coverLetter = await generateCoverLetter(prompt); // Call the generation function
+
+            // Hide the loader after generation
+            loaderContainer.style.display = 'none';
+
+            coverLetterContainer.textContent = coverLetter;
+
+            const copyButton = document.getElementById('copyButton');
+            copyButton.style.display = 'block';
+            
+            copyButton.addEventListener('click', async () => {
+                const coverLetterText = coverLetterContainer.textContent;
+                if (!coverLetterText) return;
+
+                try {
+                    await navigator.clipboard.writeText(coverLetterText);
+                    alert('Cover letter copied to clipboard!');
+                } catch (err) {
+                    console.error('Failed to copy cover letter:', err);
+                    alert('Failed to copy cover letter to clipboard.');
+                }
+            });
+        });
+
+
+        const API_KEY = "AIzaSyA9F8aTJvPt4r3ZoL0MJSPKXmRyAXwWQlY";
+
+        async function generateCoverLetter(companyName, jobTitle, skills, jobDescription) {
+
+            const genAI = new GoogleGenerativeAI(API_KEY);
+
+            const prompt = `Write a compelling cover letter without the introduction, name or addresss for the ${jobTitle} position at ${companyName}. Highlight my relevant skills ( ${skills.join(', ')} ) and how they align with the requirements mentioned in the job description ( ${jobDescription} ).`;
+            // Use the gemini-pro model for text-only input
+            const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+
+            // Generate content using the prompt
+            const result = await model.generateContent(prompt);
+            const response = await result.response;
+            const text = response.text();
+
+            return text;
+        }
+    </script>
+</body>
+
+</html>
